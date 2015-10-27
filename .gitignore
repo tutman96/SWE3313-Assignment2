@@ -17,3 +17,4 @@ node_modules/
 *.pyc
 debug.log
 npm-debug.log
+/app/bower_components
