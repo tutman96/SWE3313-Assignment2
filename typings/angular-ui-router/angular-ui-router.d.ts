@@ -33,7 +33,7 @@ declare module angular.ui {
         controller?: Function|string|Array<string|Function>;
         controllerAs?: string;
         /**
-         * Function (injectable), returns the actual controller function or string.
+         * Function (injectable), returns the actual controller function or striangular.
          */
         controllerProvider?: Function|Array<string|Function>;
 
@@ -150,7 +150,7 @@ declare module angular.ui {
         /**
          * Sets the default behavior when generating or matching URLs with default parameter values
          *
-         * @param value {string} A string that defines the default parameter URL squashing behavior. nosquash: When generating an href with a default parameter value, do not squash the parameter value from the URL slash: When generating an href with a default parameter value, squash (remove) the parameter value, and, if the parameter is surrounded by slashes, squash (remove) one slash from the URL any other string, e.g. "~": When generating an href with a default parameter value, squash (remove) the parameter value from the URL and replace it with this string.
+         * @param value {string} A string that defines the default parameter URL squashing behavior. nosquash: When generating an href with a default parameter value, do not squash the parameter value from the URL slash: When generating an href with a default parameter value, squash (remove) the parameter value, and, if the parameter is surrounded by slashes, squash (remove) one slash from the URL any other string, e.g. "~": When generating an href with a default parameter value, squash (remove) the parameter value from the URL and replace it with this striangular.
          */
         defaultSquashPolicy(value: string): void;
         /**
@@ -235,10 +235,10 @@ declare module angular.ui {
          */
         go(to: string, params?: {}, options?: IStateOptions): angular.IPromise<any>;
         go(to: IState, params?: {}, options?: IStateOptions): angular.IPromise<any>;
-        transitionTo(state: string, params?: {}, updateLocation?: boolean): ng.IPromise<any>;
-        transitionTo(state: IState, params?: {}, updateLocation?: boolean): ng.IPromise<any>;
-        transitionTo(state: string, params?: {}, options?: IStateOptions): ng.IPromise<any>;
-        transitionTo(state: IState, params?: {}, options?: IStateOptions): ng.IPromise<any>;
+        transitionTo(state: string, params?: {}, updateLocation?: boolean): angular.IPromise<any>;
+        transitionTo(state: IState, params?: {}, updateLocation?: boolean): angular.IPromise<any>;
+        transitionTo(state: string, params?: {}, options?: IStateOptions): angular.IPromise<any>;
+        transitionTo(state: IState, params?: {}, options?: IStateOptions): angular.IPromise<any>;
         includes(state: string, params?: {}): boolean;
         is(state:string, params?: {}): boolean;
         is(state: IState, params?: {}): boolean;
@@ -250,10 +250,10 @@ declare module angular.ui {
         current: IState;
         /** A param object, e.g. {sectionId: section.id)}, that you'd like to test against the current active state. */
         params: IStateParamsService;
-        reload(): ng.IPromise<any>;
+        reload(): angular.IPromise<any>;
 
         /** Currently pending transition. A promise that'll resolve or reject. */
-        transition: ng.IPromise<{}>;
+        transition: angular.IPromise<{}>;
 
         $current: IResolvedState;
     }
@@ -305,7 +305,7 @@ declare module angular.ui {
          */
         decode(val: string, key: string): any;
         /**
-         * Encodes a custom/native type value to a string that can be embedded in a URL. Note that the return value does not need to be URL-safe (i.e. passed through encodeURIComponent()), it only needs to be a representation of val that has been coerced to a string.
+         * Encodes a custom/native type value to a string that can be embedded in a URL. Note that the return value does not need to be URL-safe (i.e. passed through encodeURIComponent()), it only needs to be a representation of val that has been coerced to a striangular.
          *
          * @param val {any} The value to encode.
          * @param key {string} The name of the parameter in which val is stored. Can be used for meta-programming of Type objects.
