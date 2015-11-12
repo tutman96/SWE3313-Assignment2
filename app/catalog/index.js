@@ -1,5 +1,5 @@
 ///<reference path="../../typings/tsd.d.ts"/>
-var app = angular.module("assignment2", ["ui.router"]);
+var app = angular.module("assignment2", ["ui.router", "ngFileUpload"]);
 app.config(['$stateProvider', '$locationProvider',
     function ($stateProvider, $locationProvider) {
         if (location.hash == "")

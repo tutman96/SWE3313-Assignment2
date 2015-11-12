@@ -1,6 +1,6 @@
 ///<reference path="../../typings/tsd.d.ts"/>
 
-var app = angular.module("assignment2", ["ui.router"]);
+var app = angular.module("assignment2", ["ui.router","ngFileUpload"]);
 
 app.config(['$stateProvider', '$locationProvider',
 	($stateProvider: angular.ui.IStateProvider, $locationProvider: angular.ILocationProvider) => {

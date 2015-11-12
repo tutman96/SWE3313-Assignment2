@@ -1,1 +1,43 @@
-<h2>Hey There!</h2>
+<div class="container-fluid" style="margin-top:60px;">
+	<center>
+		<h2>Upload your files to compare</h2></center><br>
+	<div class="row">
+		<div class="col-sm-4 col-sm-offset-2">
+			<div class="well fileupload" ngf-drop ngf-select ng-model="mc.file1" ng-if="!mc.file1">
+				<center>
+					<span style="font-size:400%">+</span><br>File 1
+				</center>
+			</div>
+			<div class="well fileupload success" ng-if="mc.file1">
+				<center>
+					<i class="fa fa-2x fa-check"></i><br>{{mc.file1.name}}
+				</center>
+				<br>
+				<center>
+					<a href="javascript:void(0)" ng-click="mc.file1 = null"><i class="fa fa-times"></i> Remove</a>
+				</center>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="well fileupload" ngf-drop ngf-select ng-model="mc.file2" ng-if="!mc.file2">
+				<center>
+					<span style="font-size:400%">+</span><br>File 2
+				</center>
+			</div>
+			<div class="well fileupload success" ng-if="mc.file2">
+				<center>
+					<i class="fa fa-2x fa-check"></i><br>{{mc.file2.name}}
+				</center>
+				<br>
+				<center>
+					<a href="javascript:void(0)" ng-click="mc.file2 = null"><i class="fa fa-times"></i> Remove</a>
+				</center>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-8 col-sm-offset-2">
+			<button class="btn btn-default btn-block" ng-disabled="!mc.file2 || !mc.file1" ng-click="mc.start()">Compare</button>
+		</div>
+	</div>
+</div>

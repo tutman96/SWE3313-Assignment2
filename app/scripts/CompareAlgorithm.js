@@ -4,10 +4,10 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var CompareAlgorithm = (function () {
-    function CompareAlgorithm(filename1, filename2) {
+    function CompareAlgorithm(file1, file2) {
         this.messageListeners = {};
-        this.filename1 = filename1;
-        this.filename2 = filename2;
+        this.file1 = file1;
+        this.file2 = file2;
         this.setup();
     }
     CompareAlgorithm.prototype.start = function (callback) {
@@ -33,7 +33,8 @@ var CompareAlgorithm = (function () {
     CompareAlgorithm.prototype.submitResults = function (results) {
         this.submitProgress(100);
         this.emit("results", results);
-        this.onResultsCallback(null, results);
+        if (this.onResultsCallback)
+            this.onResultsCallback(null, results);
     };
     CompareAlgorithm.prototype.throwError = function (error) {
         this.onResultsCallback(error);
@@ -58,7 +59,7 @@ var FileNameCompareAlgorithm = (function (_super) {
         });
     };
     FileNameCompareAlgorithm.prototype.compareWorker = function () {
-        if (this.filename1 == this.filename2) {
+        if (this.file1.path == this.file2.path) {
             this.submitResults({
                 likeliness: 100,
                 resultDescription: "They are exact"
@@ -73,14 +74,14 @@ var FileNameCompareAlgorithm = (function (_super) {
     };
     return FileNameCompareAlgorithm;
 })(CompareAlgorithm);
-var fnca = new FileNameCompareAlgorithm("2", "2");
-fnca.onProgress(function (message) {
-    console.log("got progress", message);
-});
-fnca.onResults(function (r) {
-    console.log(r);
-});
-fnca.start(function () {
-    console.log("Done!");
-});
-fnca.emit("test", ["ha"]);
+// var fnca = new FileNameCompareAlgorithm("2", "2")
+// fnca.onProgress((message) => {
+// 	console.log("got progress", message);
+// });
+// fnca.onResults((r) => {
+// 	console.log(r);
+// })
+// fnca.start(() => {
+// 	console.log("Done!");
+// });
+// fnca.emit("test", ["ha"]); 
