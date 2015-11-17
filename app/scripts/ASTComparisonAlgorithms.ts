@@ -28,9 +28,9 @@ abstract class ASTComparisonAlgorithm extends CompareAlgorithm {
 	}
 
 	protected getPercentSimilarity(n1, n2) {
-		let min = Math.min(n1, n2)
-		let max = Math.max(n1, n2)
-		return (1 - ((max - min) / max)) * 100
+		let min = Math.min(n1, n2) + 1
+		let max = Math.max(n1, n2) + 1
+		return 100 - (((max - min) / max) * 100)
 	}
 
 	protected countElement(element: string, ast: any) {
