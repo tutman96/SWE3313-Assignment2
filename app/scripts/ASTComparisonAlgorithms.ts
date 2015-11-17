@@ -36,6 +36,17 @@ abstract class ASTComparisonAlgorithm extends CompareAlgorithm {
 		let max = Math.max(n1, n2) + 1
 		return 100 - (((max - min) / max) * 100)
 	}
+	
+	protected getConfidence(confGoal:number,count1:number,count2:number,likliness:number)
+	{
+		//return Math.min((100 - (((confGoal - (count1 + count2)) / confGoal) * 100)) + (((count1 + count1) > 5) ? (100 - likliness) : 0), 100);
+		var total = count1+count2;
+		var liklinessOffset = (100-likliness) / 2
+		var unConfidence = ((confGoal - total)/confGoal);
+		var confidence = (100 - (unConfidence * 100));
+		confidence += liklinessOffset;
+		return confidence;
+	}
 
 	protected countElement(element: string, ast: any) {
 		var count = 0;
@@ -59,8 +70,8 @@ class BinaryExpressionCompareAlgorithm extends ASTComparisonAlgorithm {
 		var count2 = this.countElement("BinaryExpression", this.ast2);
 		var likliness = this.getPercentSimilarity(count1, count2);
 		var description: string;
-		var confGoal = 2000;
-		var confidence = Math.min((100 - (((confGoal - (count1 + count2))/confGoal) * 100)),100)
+		var confGoal = 1000;
+		var confidence = this.getConfidence(confGoal,count1,count2,likliness)
 
 		if (likliness == 100) {
 			description = "These have the exact same number of binary expressions."
@@ -76,9 +87,10 @@ class BinaryExpressionCompareAlgorithm extends ASTComparisonAlgorithm {
 		}
 		if (count1 > 50 || count2 > 50) {
 			description += `\n\nBecause of the large number of binary expressions (${count1} and ${count2}), this should be considered a good test of similarity.`
-		}
-		if (count1 <= 5 && count2 <= 5) {
+		} else if (count1 <= 5 && count2 <= 5) {
 			description += `\n\nBecause of the very small number of binary expressions (${count1} and ${count2}), this should be considered a poor test of similarity.`
+		}else {
+			description += `\n\n(${count1} and ${count2})`
 		}
 
 		this.submitResults({ likeliness: likliness, resultDescription: description, confidence:confidence});
@@ -93,8 +105,8 @@ class VariableDeclaratorComparisonAlgorithm extends ASTComparisonAlgorithm {
 		var count2 = this.countElement("VariableDeclarator", this.ast2);
 		var likliness = this.getPercentSimilarity(count1, count2);
 		var description: string;
-		var confGoal = 2000;
-		var confidence = Math.min((100 - (((confGoal - (count1 + count2))/confGoal) * 100)),100)
+		var confGoal = 1000;
+		var confidence = this.getConfidence(confGoal,count1,count2,likliness)
 		
 		if (likliness == 100) {
 			description = "These have the exact same number of variable declarations."
@@ -110,9 +122,10 @@ class VariableDeclaratorComparisonAlgorithm extends ASTComparisonAlgorithm {
 		}
 		if (count1 > 50 || count2 > 50) {
 			description += `\n\nBecause of the large number of variables (${count1} and ${count2}), this should be considered a good test of similarity.`
-		}
-		if (count1 <= 5 && count2 <= 5) {
+		} else if (count1 <= 5 && count2 <= 5) {
 			description += `\n\nBecause of the very small number of variables (${count1} and ${count2}), this should be considered a poor test of similarity.`
+		}else {
+			description += `\n\n(${count1} and ${count2})`
 		}
 
 		this.submitResults({ likeliness: likliness, resultDescription: description, confidence:confidence});
@@ -127,8 +140,8 @@ class CallExpressionComparisonAlgorithm extends ASTComparisonAlgorithm {
 		var count2 = this.countElement("CallExpression", this.ast2);
 		var likliness = this.getPercentSimilarity(count1, count2);
 		var description: string;
-		var confGoal = 4000;
-		var confidence = Math.min((100 - (((confGoal - (count1 + count2))/confGoal) * 100)),100)
+		var confGoal = 2000;
+		var confidence = this.getConfidence(confGoal,count1,count2,likliness)
 		if (likliness == 100) {
 			description = "These have the exact same number of function calls."
 		} else if (likliness > 90) {
@@ -142,9 +155,10 @@ class CallExpressionComparisonAlgorithm extends ASTComparisonAlgorithm {
 		}
 		if (count1 > 50 || count2 > 50) {
 			description += `\n\nBecause of the large number of function calls (${count1} and ${count2}), this should be considered a good test of similarity.`
-		}
-		if (count1 <= 5 && count2 <= 5) {
+		} else if (count1 <= 5 && count2 <= 5) {
 			description += `\n\nBecause of the very small number of function calls (${count1} and ${count2}), this should be considered a poor test of similarity.`
+		}else {
+			description += `\n\n(${count1} and ${count2})`
 		}
 
 		this.submitResults({ likeliness: likliness, resultDescription: description, confidence:confidence});
@@ -160,7 +174,7 @@ class LiteralComparisonAlgorithm extends ASTComparisonAlgorithm {
 		var likliness = this.getPercentSimilarity(count1, count2);
 		var description: string;
 		var confGoal = 100;
-		var confidence = Math.min((100 - (((confGoal - (count1 + count2))/confGoal) * 100)),100)
+		var confidence = this.getConfidence(confGoal,count1,count2,likliness)
 		
 		if (likliness == 100) {
 			description = "These have the exact same number of literal declarations."
@@ -175,9 +189,10 @@ class LiteralComparisonAlgorithm extends ASTComparisonAlgorithm {
 		}
 		if (count1 > 50 || count2 > 50) {
 			description += `\n\nBecause of the large number of literals (${count1} and ${count2}), this should be considered a good test of similarity.`
-		}
-		if (count1 <= 5 && count2 <= 5) {
+		} else if (count1 <= 5 && count2 <= 5) {
 			description += `\n\nBecause of the very small number of literals (${count1} and ${count2}), this should be considered a poor test of similarity.`
+		}else {
+			description += `\n\n(${count1} and ${count2})`
 		}
 
 		this.submitResults({ likeliness: likliness, resultDescription: description, confidence:confidence});
@@ -192,8 +207,8 @@ class FunctionDeclarationComparisonAlgorithm extends ASTComparisonAlgorithm {
 		var count2 = this.countElement("FunctionDeclaration", this.ast2);
 		var likliness = this.getPercentSimilarity(count1, count2);
 		var description: string;
-		var confGoal = 50;
-		var confidence = Math.min((100 - (((confGoal - (count1 + count2))/confGoal) * 100)),100)
+		var confGoal = 25;
+		var confidence = this.getConfidence(confGoal,count1,count2,likliness)
 		console.log(confidence)
 		if (likliness == 100) {
 			description = "These have the exact same number of function declarations."
@@ -208,10 +223,12 @@ class FunctionDeclarationComparisonAlgorithm extends ASTComparisonAlgorithm {
 		}
 		
 		if (count1 > 50 || count2 > 50) {
-			description += `\n\nBecause of the large number of function (${count1} and ${count2}), this should be considered a good test of similarity.`	
+			description += `\n\nBecause of the large number of functions (${count1} and ${count2}), this should be considered a good test of similarity.`	
+		} else if (count1 <= 5 && count2 <= 5) {
+			description += `\n\nBecause of the very small number of functions (${count1} and ${count2}), this should be considered a poor test of similarity.`
 		}
-		if (count1 <= 5 && count2 <= 5) {
-			description += `\n\nBecause of the very small number of function (${count1} and ${count2}), this should be considered a poor test of similarity.`
+		else {
+			description += `\n\n(${count1} and ${count2})`
 		}
 
 		this.submitResults({ likeliness: likliness, resultDescription: description, confidence:confidence});

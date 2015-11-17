@@ -31,11 +31,12 @@ class EndController {
 		this.odometer = 0;
 		var total = 0;
 		var totalConfidence = 0;
+		var i = 0
 		for (var name in this.results) {
 			var algorithm = <any>window[name];
 
 			var result = {
-				i: total,
+				i: i++,
 				name: algorithm.algorithmName || name,
 				likeliness: this.results[name].likeliness,
 				resultDescription: this.results[name].resultDescription,
