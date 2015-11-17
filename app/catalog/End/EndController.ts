@@ -38,7 +38,7 @@ class EndController {
 				name: name,
 				likeliness: this.results[name]['likeliness'],
 				resultDescription: this.results[name]['resultDescription'],
-				weight: algorithm.weight,
+				weight: algorithm.weight || 1,
 				weightedLikeliness: 0
 			};
 			result.weightedLikeliness = result.likeliness * result.weight;
@@ -52,7 +52,7 @@ class EndController {
 			this.resultsArray.push(result);
 		}
 		
-		this.odometer = (total / 10) / totalWeight;
+		this.odometer = Math.round((total / 10) / totalWeight);
 		
 		if (this.odometer >= 0 && this.odometer < 4) {
 			this.resultsText = "These are probably not the same file."
@@ -66,10 +66,6 @@ class EndController {
 		else {
 			this.resultsText = "Yup! This is the same code!";
 		}
-		
-		setTimeout(() => {
-			this.viewDetailed = true;
-		},1500);
 	}
 }
 angular.module('assignment2').controller("EndController", EndController);

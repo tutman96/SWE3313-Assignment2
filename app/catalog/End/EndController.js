@@ -1,7 +1,6 @@
 ///<reference path="../../scripts/FileComparatorService"/>
 var EndController = (function () {
     function EndController($scope, $state, $stateParams) {
-        var _this = this;
         this.$scope = $scope;
         this.$state = $state;
         this.$stateParams = $stateParams;
@@ -24,7 +23,7 @@ var EndController = (function () {
                 name: name,
                 likeliness: this.results[name]['likeliness'],
                 resultDescription: this.results[name]['resultDescription'],
-                weight: algorithm.weight,
+                weight: algorithm.weight || 1,
                 weightedLikeliness: 0
             };
             result.weightedLikeliness = result.likeliness * result.weight;
@@ -34,7 +33,7 @@ var EndController = (function () {
             this.results[name]['likeliness'] *= this.results[name]['weight'];
             this.resultsArray.push(result);
         }
-        this.odometer = (total / 10) / totalWeight;
+        this.odometer = Math.round((total / 10) / totalWeight);
         if (this.odometer >= 0 && this.odometer < 4) {
             this.resultsText = "These are probably not the same file.";
         }
@@ -47,9 +46,6 @@ var EndController = (function () {
         else {
             this.resultsText = "Yup! This is the same code!";
         }
-        setTimeout(function () {
-            _this.viewDetailed = true;
-        }, 1500);
     }
     EndController.$inject = ['$scope', '$state', '$stateParams'];
     return EndController;

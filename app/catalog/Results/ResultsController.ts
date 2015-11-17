@@ -13,13 +13,15 @@ class ResultsController {
 
 	titleText = "Processing...";
 
-	private algorithms = [FileNameCompareAlgorithm,
-		FileHashCompareAlgorithm,
+	private algorithms = [
+		// FileNameCompareAlgorithm,
+		// FileHashCompareAlgorithm,
 		BinaryExpressionCompareAlgorithm,
 		VariableDeclaratorComparisonAlgorithm,
 		CallExpressionComparisonAlgorithm,
 		LiteralComparisonAlgorithm,
-		FunctionDeclarationComparisonAlgorithm];
+		FunctionDeclarationComparisonAlgorithm
+	];
 
 	results = new Array<{
 		name: string,
