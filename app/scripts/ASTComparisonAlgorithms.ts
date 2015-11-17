@@ -73,10 +73,10 @@ class BinaryExpressionCompareAlgorithm extends ASTComparisonAlgorithm {
 			description = "One file has more than twice the number of binary expressions in it. It is very unlikely that these files are duplicates."
 		}
 		if (count1 > 50 || count2 > 50) {
-			description += ` Because of the large number of binary expressions (${count1} and ${count2}), this should be considered a good test of similarity.`
+			description += `\n\nBecause of the large number of binary expressions (${count1} and ${count2}), this should be considered a good test of similarity.`
 		}
 		if (count1 <= 5 && count2 <= 5) {
-			description += ` Because of the very small number of binary expressions (${count1} and ${count2}), this should be considered a poor test of similarity.`
+			description += `\n\nBecause of the very small number of binary expressions (${count1} and ${count2}), this should be considered a poor test of similarity.`
 		}
 
 		this.submitResults({ likeliness: likliness, resultDescription: description });
@@ -105,10 +105,10 @@ class VariableDeclaratorComparisonAlgorithm extends ASTComparisonAlgorithm {
 			description = "One file has more than twice the number of variables in it. It is very unlikely that these files are duplicates."
 		}
 		if (count1 > 50 || count2 > 50) {
-			description += ` Because of the large number of variables (${count1} and ${count2}), this should be considered a good test of similarity.`
+			description += `\n\nBecause of the large number of variables (${count1} and ${count2}), this should be considered a good test of similarity.`
 		}
 		if (count1 <= 5 && count2 <= 5) {
-			description += ` Because of the very small number of variables (${count1} and ${count2}), this should be considered a poor test of similarity.`
+			description += `\n\nBecause of the very small number of variables (${count1} and ${count2}), this should be considered a poor test of similarity.`
 		}
 
 		this.submitResults({ likeliness: likliness, resultDescription: description });
@@ -135,10 +135,10 @@ class CallExpressionComparisonAlgorithm extends ASTComparisonAlgorithm {
 			description = "One file has more than twice the number of function calls in it. It is very unlikely that these files are duplicates."
 		}
 		if (count1 > 50 || count2 > 50) {
-			description += ` Because of the large number of function calls (${count1} and ${count2}), this should be considered a good test of similarity.`
+			description += `\n\nBecause of the large number of function calls (${count1} and ${count2}), this should be considered a good test of similarity.`
 		}
 		if (count1 <= 5 && count2 <= 5) {
-			description += ` Because of the very small number of function calls (${count1} and ${count2}), this should be considered a poor test of similarity.`
+			description += `\n\nBecause of the very small number of function calls (${count1} and ${count2}), this should be considered a poor test of similarity.`
 		}
 
 		this.submitResults({ likeliness: likliness, resultDescription: description });
@@ -165,10 +165,10 @@ class LiteralComparisonAlgorithm extends ASTComparisonAlgorithm {
 			description = "One file has more than twice the number of literals in it. It is very unlikely that these files are duplicates."
 		}
 		if (count1 > 50 || count2 > 50) {
-			description += ` Because of the large number of literals (${count1} and ${count2}), this should be considered a good test of similarity.`
+			description += `\n\nBecause of the large number of literals (${count1} and ${count2}), this should be considered a good test of similarity.`
 		}
 		if (count1 <= 5 && count2 <= 5) {
-			description += ` Because of the very small number of literals (${count1} and ${count2}), this should be considered a poor test of similarity.`
+			description += `\n\nBecause of the very small number of literals (${count1} and ${count2}), this should be considered a poor test of similarity.`
 		}
 
 		this.submitResults({ likeliness: likliness, resultDescription: description });
@@ -197,10 +197,10 @@ class FunctionDeclarationComparisonAlgorithm extends ASTComparisonAlgorithm {
 			description = "One file has more than twice the number of function in it. It is very unlikely that these files are duplicates."
 		}
 		if (count1 > 50 || count2 > 50) {
-			description += ` Because of the large number of function (${count1} and ${count2}), this should be considered a good test of similarity.`
+			description += `\n\nBecause of the large number of function (${count1} and ${count2}), this should be considered a good test of similarity.`
 		}
 		if (count1 <= 5 && count2 <= 5) {
-			description += ` Because of the very small number of function (${count1} and ${count2}), this should be considered a poor test of similarity.`
+			description += `\n\nBecause of the very small number of function (${count1} and ${count2}), this should be considered a poor test of similarity.`
 		}
 
 		this.submitResults({ likeliness: likliness, resultDescription: description });
