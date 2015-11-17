@@ -13,7 +13,13 @@ var ResultsController = (function () {
         this.$stateParams = $stateParams;
         this.FileComparatorService = FileComparatorService;
         this.titleText = "Processing...";
-        this.algorithms = [FileNameCompareAlgorithm, FileHashCompareAlgorithm];
+        this.algorithms = [FileNameCompareAlgorithm,
+            FileHashCompareAlgorithm,
+            BinaryExpressionCompareAlgorithm,
+            VariableDeclaratorComparisonAlgorithm,
+            CallExpressionComparisonAlgorithm,
+            LiteralComparisonAlgorithm,
+            FunctionDeclarationComparisonAlgorithm];
         this.results = new Array();
         this.$scope['rc'] = this;
         console.log($stateParams);

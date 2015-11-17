@@ -1,25 +1,9 @@
-<<<<<<< HEAD
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
-abstract;
-=======
->>>>>>> 0bcc9cc42c19f912c270206a87db1ab7f3a05669
 var CompareAlgorithm = (function () {
     function CompareAlgorithm(file1, file2) {
         this.name = "";
         this.messageListeners = {};
-<<<<<<< HEAD
-        this.abstract = compareWorker();
-        this.filename1 = filename1;
-        this.filename2 = filename2;
-=======
         this.file1 = file1;
         this.file2 = file2;
->>>>>>> 0bcc9cc42c19f912c270206a87db1ab7f3a05669
         this.setup();
     }
     CompareAlgorithm.prototype.start = function () {
@@ -52,5 +36,6 @@ var CompareAlgorithm = (function () {
     CompareAlgorithm.prototype.onResults = function (callback) {
         this.on("results", callback);
     };
+    CompareAlgorithm.weight = 1;
     return CompareAlgorithm;
 })();

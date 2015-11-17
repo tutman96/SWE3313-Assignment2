@@ -1,11 +1,21 @@
 <div class="container-fluid" style="margin-top:60px;">
 	<center>
-		<h2>Results</h2></center><br>
+		<h2>Results</h2></center>
+	<br>
+	<span class="end-odometer" odometer="'{{ec.odometer}}'" odometer-options="{duration:3000, format: '(,ddd)'}"></span>
+	<center><h3><small>{{ec.resultsText}}</small></h3></center>
 	<table class="table table-condensed table-striped" ng-if="ec.viewDetailed">
+		<thead>
+			<tr>
+				<th>Algorithm Name</th>
+				<th>Results</th>
+				<th>Algorithm Weight</th>
+				<th>Likeliness Score</th>
 		<tr ng-repeat="result in ec.resultsArray track by result.name">
 			<th>{{result.name}}</th>
 			<td>{{result.resultDescription}}</td>
-			<td>{{result.likeliness}}%</td>
+			<td>{{result.weight}}</td>
+			<td>{{result.likeliness}}</td>
 		</tr>
 	</table>
 </div>

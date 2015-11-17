@@ -1,5 +1,5 @@
 ///<reference path="../../typings/tsd.d.ts"/>
-var app = angular.module("assignment2", ["ui.router", "ngFileUpload"]);
+var app = angular.module("assignment2", ["ui.router", "ngFileUpload", "ui.odometer"]);
 var async = require('async');
 var crypto = require('crypto');
 var fs = require('fs');

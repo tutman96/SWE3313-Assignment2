@@ -13,7 +13,13 @@ class ResultsController {
 
 	titleText = "Processing...";
 
-	private algorithms = [FileNameCompareAlgorithm, FileHashCompareAlgorithm];
+	private algorithms = [FileNameCompareAlgorithm,
+		FileHashCompareAlgorithm,
+		BinaryExpressionCompareAlgorithm,
+		VariableDeclaratorComparisonAlgorithm,
+		CallExpressionComparisonAlgorithm,
+		LiteralComparisonAlgorithm,
+		FunctionDeclarationComparisonAlgorithm];
 
 	results = new Array<{
 		name: string,
@@ -83,7 +89,7 @@ class ResultsController {
 					this.$state.go("end", {
 						results: results
 					})
-				},1000);
+				}, 1000);
 			});
 		}, 500);
 	}

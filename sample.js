@@ -1,30 +1,7 @@
-/// <reference path="typings/tsd.d.ts" />
-// // var parseScript = require("shift-parser").parseScript;
-// // var scopeAnalyzer = require("shift-scope");
-// // import fs = require("fs");
-// // import util = require("util");
-// // var ast = parseScript("function a(){var x = 5;var y = 6;var z = x + y;document.getElementById(\"demo\").innerHTML = z;}");
-// // var ast2 = parseScript("var j = 5;var k = 6;var l = j + k;document.getElementById(\"demo\").innerHTML = l;");
-// // // console.log(util.inspect(ast, { showHidden: true, depth: null }));
-// // console.log(util.inspect(scopeAnalyzer.default(ast2), { showHidden: true, depth: null }));
-// import util = require("util")
-// var parse = require("shift-parser").default;
-// var analyzeScope = require("shift-scope").default;
-// let parsed = parse("var x = 5;");
-// console.log(util.inspect(parsed));
-// let scopeTree = analyzeScope(parsed);
-// console.log(scopeTree);
 var parser = require("esprima");
 var traverser = require("estraverse");
 var code = require("./asttools");
 var fs = require("fs");
-// let program = `function hi(){
-//     if(1 == 1)
-//     {
-//       var s = "split".split("l");
-//       console.log(s);
-//     }
-// }`;
 function percentDifference(v1, v2) {
     var min = Math.min(v1, v2);
     var max = Math.max(v1, v2);
@@ -33,7 +10,6 @@ function percentDifference(v1, v2) {
 function test(js1, js2) {
     var tree1 = parser.parse(js1);
     var tree2 = parser.parse(js2);
-    // console.log(util.inspect(tree, { depth: null }),"\n\n\n\n\n\n\n\n\n");
     var vd1 = code("VariableDeclarator", tree1);
     var vd2 = code("VariableDeclarator", tree2);
     var be1 = code("BinaryExpression", tree1);
@@ -74,20 +50,3 @@ test(js1, js2);
 js1 = fs.readFileSync("/Users/john/repos/SWE3313-Assignment2/asttools.js");
 js2 = fs.readFileSync("/Users/john/repos/SWE3313-Assignment2/sample.js");
 test(js1, js2);
-// traverser.traverse(tree,{
-//   enter:(node,parent)=>{
-//     // if(node.type == "VariableDeclarator")
-//     // {
-//     //   console.log("SO MUCH EASY",util.inspect(node));
-//     // }
-//     for(var key in node)
-//     {
-//       if(node[key] == "s")
-//       {
-//         console.log("magical shiznit, found something that uses s.\t",parent);
-//       }
-//     }
-//   }//,
-//   // leave:()=>{
-//   // }
-// })

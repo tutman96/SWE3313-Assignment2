@@ -1,25 +1,25 @@
 ///<reference path="../../typings/tsd.d.ts"/>
 
-var app = angular.module("assignment2", ["ui.router","ngFileUpload"]);
+var app = angular.module("assignment2", ["ui.router", "ngFileUpload", "ui.odometer"]);
 import async = require('async');
 import crypto = require('crypto');
 import fs = require('fs');
 
-doNothing(async,crypto,fs);
+doNothing(async, crypto, fs);
 
-function doNothing(...anything){}
+function doNothing(...anything) { }
 
 app.config(['$stateProvider', '$locationProvider',
 	($stateProvider: angular.ui.IStateProvider, $locationProvider: angular.ILocationProvider) => {
 		if (location.hash == "") location.hash = "#/home";
-		
+
 		$stateProvider
 			.state('main', {
 				abstract: true,
 				templateUrl: "catalog/Main/Main.html",
 				controller: "MainController"
 			})
-			.state ('home', {
+			.state('home', {
 				parent: 'main',
 				url: '/home',
 				templateUrl: 'catalog/Home/Home.html',

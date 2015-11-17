@@ -20,8 +20,12 @@ abstract class ASTComparisonAlgorithm extends CompareAlgorithm {
 		// 	})
 		// }
 		try {
-			this.ast1 = parser.parse(this.file1);
-			this.ast2 = parser.parse(this.file2);
+			var fs = require('fs');
+			var file1 = fs.readFileSync(this.file1.path);
+			var file2 = fs.readFileSync(this.file2.path);
+			
+			this.ast1 = parser.parse(file1);
+			this.ast2 = parser.parse(file2);
 		} catch (Error) { this.throwError(new Error("There was a problem generating the AST.")) }
 		this.submitProgress(50);
 		this.compareASTs();
