@@ -1,28 +1,32 @@
+<button class="btn btn-warning btn-sm top" ng-click="ec.goHome()"><i class="fa fa-arrow-left"></i> Compare More</button>
 <div class="container-fluid" class="end" ng-class="{'end-detail':ec.viewDetailed}">
 	<div class="end-odometer">
 		<span odometer="'{{ec.odometer}}'" odometer-options="{duration:3000, format: '(,ddd)'}"></span>
 		<br>
 		<small>{{ec.resultsText}}</small>
 	</div>
+	<br>
 	<center ng-if="!ec.viewDetailed">
-		<br><br>
+		<br>
 		<button class="btn btn-default btn-sm" ng-click="ec.viewDetailed = true">Show Detailed</button>
 	</center>
-	<table class="end-table table table-condensed table-responsive" ng-if="ec.viewDetailed">
-		<thead>
-			<tr>
-				<th>Algorithm Name</th>
-				<th>Results</th>
-				<th>Algorithm Weight</th>
-				<th>Likeliness Score</th>
-			</tr>
-		</thead>
+	<div class="well well-sm" ng-if="ec.viewDetailed">
+		<table class="end-table table table-condensed table-responsive">
+			<thead>
+				<tr>
+					<th>Algorithm Name</th>
+					<th>Results</th>
+					<th>Weight</th>
+					<th>Score</th>
+				</tr>
+			</thead>
 
-		<tr ng-repeat="result in ec.resultsArray track by result.name">
-			<th>{{result.name}}</th>
-			<td>{{result.resultDescription}}</td>
-			<td>{{result.weight}}</td>
-			<td>{{result.likeliness / 10 | number:2}}</td>
-		</tr>
-	</table>
+			<tr ng-repeat="result in ec.resultsArray track by result.name">
+				<td>{{result.name}}</td>
+				<td>{{result.resultDescription}}</td>
+				<td>{{result.weight}}</td>
+				<td>{{result.likeliness / 10 | number:2}}</td>
+			</tr>
+		</table>
+	</div>
 </div>

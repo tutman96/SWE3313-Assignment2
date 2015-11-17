@@ -67,5 +67,9 @@ class EndController {
 			this.resultsText = "Yup! This is the same code!";
 		}
 	}
+	
+	goHome() {
+		this.$state.go("home");
+	}
 }
 angular.module('assignment2').controller("EndController", EndController);

@@ -57,7 +57,7 @@
 }
 
 .end-odometer small {
-	font-size: 25%;
+	font-size: 20%;
     color: #AAA;
 	-webkit-animation: fadein 3s;
 }
@@ -72,9 +72,15 @@
 }
 
 .end-detail {
-	margin-top: 0px !important;
+	margin-top: -10px !important;
 }
 
 .end-detail .end-odometer {
 	font-size: 80px;
+}
+
+.bottom {
+	position: fixed;
+	top: 0;
+	left: 0;
 }
