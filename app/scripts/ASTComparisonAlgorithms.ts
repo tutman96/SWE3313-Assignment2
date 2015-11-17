@@ -53,7 +53,7 @@ abstract class ASTComparisonAlgorithm extends CompareAlgorithm {
 }
 
 class BinaryExpressionCompareAlgorithm extends ASTComparisonAlgorithm {
-	static name = "Binary Expression Comparison Algorithm"
+	static algorithmName = "Binary Expression"
 	public compareASTs() {
 		var count1 = this.countElement("BinaryExpression", this.ast1);
 		var count2 = this.countElement("BinaryExpression", this.ast2);
@@ -85,7 +85,7 @@ class BinaryExpressionCompareAlgorithm extends ASTComparisonAlgorithm {
 }
 
 class VariableDeclaratorComparisonAlgorithm extends ASTComparisonAlgorithm {
-	static name = "Binary Expression Comparison Algorithm"
+	static algorithmName = "Binary Expression"
 	public compareASTs() {
 		var count1 = this.countElement("VariableDeclarator", this.ast1);
 		var count2 = this.countElement("VariableDeclarator", this.ast2);
@@ -117,7 +117,7 @@ class VariableDeclaratorComparisonAlgorithm extends ASTComparisonAlgorithm {
 }
 
 class CallExpressionComparisonAlgorithm extends ASTComparisonAlgorithm {
-	static name = "Call Expression Comparison Algorithm"
+	static algorithmName = "Call Expression"
 	public compareASTs() {
 		var count1 = this.countElement("CallExpression", this.ast1);
 		var count2 = this.countElement("CallExpression", this.ast2);
@@ -147,7 +147,7 @@ class CallExpressionComparisonAlgorithm extends ASTComparisonAlgorithm {
 }
 
 class LiteralComparisonAlgorithm extends ASTComparisonAlgorithm {
-	static name = "Literal Comparison Algorithm"
+	static algorithmName = "Literal"
 	public compareASTs() {
 		var count1 = this.countElement("Literal", this.ast1);
 		var count2 = this.countElement("Literal", this.ast2);
@@ -177,7 +177,7 @@ class LiteralComparisonAlgorithm extends ASTComparisonAlgorithm {
 }
 
 class FunctionDeclarationComparisonAlgorithm extends ASTComparisonAlgorithm {
-	static name = "Function Declaration Comparison Algorithm"
+	static algorithmName = "Function Declaration"
 	public compareASTs() {
 		var count1 = this.countElement("FunctionDeclaration", this.ast1);
 		var count2 = this.countElement("FunctionDeclaration", this.ast2);
