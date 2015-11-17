@@ -2,9 +2,8 @@ abstract class CompareAlgorithm {
 	protected file1: File;
 	protected file2: File;
 	
-	protected name: string = "";
-	protected static weight: number = 1;
-
+	protected algorithmName: string = "";
+	
 	messageListeners: { [eventTypes: string]: Array<(data: any) => void> } = {};
 
 	constructor(file1: File, file2: File) {
@@ -36,7 +35,7 @@ abstract class CompareAlgorithm {
 		this.emit("progress", progress);
 	}
 
-	protected submitResults(results: { likeliness: number, resultDescription?: string }) {
+	protected submitResults(results: { likeliness: number, resultDescription?: string, confidence?: number }) {
 		this.submitProgress(100);
 		this.emit("results", results);
 	}
@@ -49,7 +48,7 @@ abstract class CompareAlgorithm {
 		this.on("progress", callback);
 	}
 
-	onResults(callback: (results: { likeliness: number, resultDescription?: string }) => void) {
+	onResults(callback: (results: { likeliness: number, resultDescription?: string, confidence?: number }) => void) {
 		this.on("results", callback);
 	}
 }

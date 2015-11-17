@@ -86,7 +86,11 @@ var BinaryExpressionCompareAlgorithm = (function (_super) {
         }
         this.submitResults({ likeliness: likliness, resultDescription: description });
     };
+<<<<<<< HEAD
     BinaryExpressionCompareAlgorithm.name = "Binary Expression Comparison Algorithm";
+=======
+    BinaryExpressionCompareAlgorithm.algorithmName = "Binary Expression";
+>>>>>>> 5e5b2a1f7643b885e2a235e46d371a2c0022e534
     return BinaryExpressionCompareAlgorithm;
 })(ASTComparisonAlgorithm);
 var VariableDeclaratorComparisonAlgorithm = (function (_super) {
@@ -122,7 +126,11 @@ var VariableDeclaratorComparisonAlgorithm = (function (_super) {
         }
         this.submitResults({ likeliness: likliness, resultDescription: description });
     };
+<<<<<<< HEAD
     VariableDeclaratorComparisonAlgorithm.name = "Binary Expression Comparison Algorithm";
+=======
+    VariableDeclaratorComparisonAlgorithm.algorithmName = "Binary Expression";
+>>>>>>> 5e5b2a1f7643b885e2a235e46d371a2c0022e534
     return VariableDeclaratorComparisonAlgorithm;
 })(ASTComparisonAlgorithm);
 var CallExpressionComparisonAlgorithm = (function (_super) {
@@ -158,7 +166,11 @@ var CallExpressionComparisonAlgorithm = (function (_super) {
         }
         this.submitResults({ likeliness: likliness, resultDescription: description });
     };
+<<<<<<< HEAD
     CallExpressionComparisonAlgorithm.name = "Call Expression Comparison Algorithm";
+=======
+    CallExpressionComparisonAlgorithm.algorithmName = "Call Expression";
+>>>>>>> 5e5b2a1f7643b885e2a235e46d371a2c0022e534
     return CallExpressionComparisonAlgorithm;
 })(ASTComparisonAlgorithm);
 var LiteralComparisonAlgorithm = (function (_super) {
@@ -194,7 +206,11 @@ var LiteralComparisonAlgorithm = (function (_super) {
         }
         this.submitResults({ likeliness: likliness, resultDescription: description });
     };
+<<<<<<< HEAD
     LiteralComparisonAlgorithm.name = "Literal Comparison Algorithm";
+=======
+    LiteralComparisonAlgorithm.algorithmName = "Literal";
+>>>>>>> 5e5b2a1f7643b885e2a235e46d371a2c0022e534
     return LiteralComparisonAlgorithm;
 })(ASTComparisonAlgorithm);
 var FunctionDeclarationComparisonAlgorithm = (function (_super) {
@@ -230,6 +246,10 @@ var FunctionDeclarationComparisonAlgorithm = (function (_super) {
         }
         this.submitResults({ likeliness: likliness, resultDescription: description });
     };
+<<<<<<< HEAD
     FunctionDeclarationComparisonAlgorithm.name = "Function Declaration Comparison Algorithm";
+=======
+    FunctionDeclarationComparisonAlgorithm.algorithmName = "Function Declaration";
+>>>>>>> 5e5b2a1f7643b885e2a235e46d371a2c0022e534
     return FunctionDeclarationComparisonAlgorithm;
 })(ASTComparisonAlgorithm);

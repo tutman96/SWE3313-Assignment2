@@ -2,19 +2,19 @@
 
 class EndController {
 
-	results: { [AlgorithmName: string]: { likeliness: number, resultDescription: string } };
+	results: { [AlgorithmName: string]: { likeliness: number, resultDescription: string, confidence: number } };
 
 	resultsArray = new Array<{
 		likeliness: number,
 		resultDescription: string,
-		weight: number,
+		confidence: number,
 		name: string
 	}>();
 
 	viewDetailed = false;
 
 	odometer = 0;
-	
+
 	resultsText = ""
 
 	static $inject = ['$scope', '$state', '$stateParams'];
@@ -30,30 +30,28 @@ class EndController {
 
 		this.odometer = 0;
 		var total = 0;
-		var totalWeight = 0;
+		var totalConfidence = 0;
 		for (var name in this.results) {
 			var algorithm = <any>window[name];
-			
+
 			var result = {
-				name: name,
-				likeliness: this.results[name]['likeliness'],
-				resultDescription: this.results[name]['resultDescription'],
-				weight: algorithm.weight || 1,
-				weightedLikeliness: 0
+				i: total,
+				name: algorithm.algorithmName || name,
+				likeliness: this.results[name].likeliness,
+				resultDescription: this.results[name].resultDescription,
+				confidence: this.results[name].confidence || 1,
+				confidenceBoostedLikeliness: 0
 			};
-			result.weightedLikeliness = result.likeliness * result.weight;
-			
-			totalWeight += result.weight;
-			total += result.weightedLikeliness;
-			
-			this.results[name]['weight'] = window[name]['weight'] || 1;
-			this.results[name]['likeliness'] *= this.results[name]['weight'];
+			result.confidenceBoostedLikeliness = result.likeliness * result.confidence;
+
+			totalConfidence += result.confidence;
+			total += result.confidenceBoostedLikeliness;
 
 			this.resultsArray.push(result);
 		}
-		
-		this.odometer = Math.round((total / 10) / totalWeight);
-		
+
+		this.odometer = Math.round((total / 10) / totalConfidence);
+
 		if (this.odometer >= 0 && this.odometer < 4) {
 			this.resultsText = "These are probably not the same file."
 		}
@@ -67,7 +65,7 @@ class EndController {
 			this.resultsText = "Yup! This is the same code!";
 		}
 	}
-	
+
 	goHome() {
 		this.$state.go("home");
 	}
