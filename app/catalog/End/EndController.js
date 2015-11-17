@@ -47,6 +47,9 @@ var EndController = (function () {
             this.resultsText = "Yup! This is the same code!";
         }
     }
+    EndController.prototype.goHome = function () {
+        this.$state.go("home");
+    };
     EndController.$inject = ['$scope', '$state', '$stateParams'];
     return EndController;
 })();
