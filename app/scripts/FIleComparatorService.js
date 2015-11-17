@@ -17,7 +17,9 @@ var FileComparatorService = (function () {
                     callback(err);
                 });
                 algorithm.onResults(function (results) {
-                    callback(null, results);
+                    setTimeout(function () {
+                        callback(null, results);
+                    }, 250);
                 });
                 algorithm.start();
             };

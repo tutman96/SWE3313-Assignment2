@@ -1,0 +1,11 @@
+<div class="container-fluid" style="margin-top:60px;">
+	<center>
+		<h2>Results</h2></center><br>
+	<table class="table table-condensed table-striped" ng-if="ec.viewDetailed">
+		<tr ng-repeat="result in ec.resultsArray track by result.name">
+			<th>{{result.name}}</th>
+			<td>{{result.resultDescription}}</td>
+			<td>{{result.likeliness}}%</td>
+		</tr>
+	</table>
+</div>

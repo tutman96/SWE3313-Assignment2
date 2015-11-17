@@ -1,6 +1,8 @@
 abstract class CompareAlgorithm {
 	protected file1: File;
 	protected file2: File;
+	
+	protected name: string = "";
 
 	messageListeners: { [eventTypes: string]: Array<(data: any) => void> } = {};
 

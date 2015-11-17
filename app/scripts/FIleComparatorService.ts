@@ -28,7 +28,9 @@ class FileComparatorService {
 				})
 
 				algorithm.onResults((results) => {
-					callback(null, results);
+					setTimeout(() => {
+						callback(null, results);
+					},250)
 				})
 				
 				algorithm.start();

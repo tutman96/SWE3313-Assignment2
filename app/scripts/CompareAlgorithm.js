@@ -1,5 +1,6 @@
 var CompareAlgorithm = (function () {
     function CompareAlgorithm(file1, file2) {
+        this.name = "";
         this.messageListeners = {};
         this.file1 = file1;
         this.file2 = file2;
