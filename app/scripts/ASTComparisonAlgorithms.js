@@ -63,6 +63,8 @@ var BinaryExpressionCompareAlgorithm = (function (_super) {
         var count2 = this.countElement("BinaryExpression", this.ast2);
         var likliness = this.getPercentSimilarity(count1, count2);
         var description;
+        var confGoal = 2000;
+        var confidence = Math.min((100 - (((confGoal - (count1 + count2)) / confGoal) * 100)), 100);
         if (likliness == 100) {
             description = "These have the exact same number of binary expressions.";
         }
@@ -84,13 +86,9 @@ var BinaryExpressionCompareAlgorithm = (function (_super) {
         if (count1 <= 5 && count2 <= 5) {
             description += "\n\nBecause of the very small number of binary expressions (" + count1 + " and " + count2 + "), this should be considered a poor test of similarity.";
         }
-        this.submitResults({ likeliness: likliness, resultDescription: description });
+        this.submitResults({ likeliness: likliness, resultDescription: description, confidence: confidence });
     };
-<<<<<<< HEAD
-    BinaryExpressionCompareAlgorithm.name = "Binary Expression Comparison Algorithm";
-=======
     BinaryExpressionCompareAlgorithm.algorithmName = "Binary Expression";
->>>>>>> 5e5b2a1f7643b885e2a235e46d371a2c0022e534
     return BinaryExpressionCompareAlgorithm;
 })(ASTComparisonAlgorithm);
 var VariableDeclaratorComparisonAlgorithm = (function (_super) {
@@ -103,6 +101,8 @@ var VariableDeclaratorComparisonAlgorithm = (function (_super) {
         var count2 = this.countElement("VariableDeclarator", this.ast2);
         var likliness = this.getPercentSimilarity(count1, count2);
         var description;
+        var confGoal = 2000;
+        var confidence = Math.min((100 - (((confGoal - (count1 + count2)) / confGoal) * 100)), 100);
         if (likliness == 100) {
             description = "These have the exact same number of variable declarations.";
         }
@@ -124,13 +124,9 @@ var VariableDeclaratorComparisonAlgorithm = (function (_super) {
         if (count1 <= 5 && count2 <= 5) {
             description += "\n\nBecause of the very small number of variables (" + count1 + " and " + count2 + "), this should be considered a poor test of similarity.";
         }
-        this.submitResults({ likeliness: likliness, resultDescription: description });
+        this.submitResults({ likeliness: likliness, resultDescription: description, confidence: confidence });
     };
-<<<<<<< HEAD
-    VariableDeclaratorComparisonAlgorithm.name = "Binary Expression Comparison Algorithm";
-=======
-    VariableDeclaratorComparisonAlgorithm.algorithmName = "Binary Expression";
->>>>>>> 5e5b2a1f7643b885e2a235e46d371a2c0022e534
+    VariableDeclaratorComparisonAlgorithm.algorithmName = "Variable Declaration";
     return VariableDeclaratorComparisonAlgorithm;
 })(ASTComparisonAlgorithm);
 var CallExpressionComparisonAlgorithm = (function (_super) {
@@ -143,6 +139,8 @@ var CallExpressionComparisonAlgorithm = (function (_super) {
         var count2 = this.countElement("CallExpression", this.ast2);
         var likliness = this.getPercentSimilarity(count1, count2);
         var description;
+        var confGoal = 4000;
+        var confidence = Math.min((100 - (((confGoal - (count1 + count2)) / confGoal) * 100)), 100);
         if (likliness == 100) {
             description = "These have the exact same number of function calls.";
         }
@@ -164,13 +162,9 @@ var CallExpressionComparisonAlgorithm = (function (_super) {
         if (count1 <= 5 && count2 <= 5) {
             description += "\n\nBecause of the very small number of function calls (" + count1 + " and " + count2 + "), this should be considered a poor test of similarity.";
         }
-        this.submitResults({ likeliness: likliness, resultDescription: description });
+        this.submitResults({ likeliness: likliness, resultDescription: description, confidence: confidence });
     };
-<<<<<<< HEAD
-    CallExpressionComparisonAlgorithm.name = "Call Expression Comparison Algorithm";
-=======
     CallExpressionComparisonAlgorithm.algorithmName = "Call Expression";
->>>>>>> 5e5b2a1f7643b885e2a235e46d371a2c0022e534
     return CallExpressionComparisonAlgorithm;
 })(ASTComparisonAlgorithm);
 var LiteralComparisonAlgorithm = (function (_super) {
@@ -183,6 +177,8 @@ var LiteralComparisonAlgorithm = (function (_super) {
         var count2 = this.countElement("Literal", this.ast2);
         var likliness = this.getPercentSimilarity(count1, count2);
         var description;
+        var confGoal = 100;
+        var confidence = Math.min((100 - (((confGoal - (count1 + count2)) / confGoal) * 100)), 100);
         if (likliness == 100) {
             description = "These have the exact same number of literal declarations.";
         }
@@ -204,13 +200,9 @@ var LiteralComparisonAlgorithm = (function (_super) {
         if (count1 <= 5 && count2 <= 5) {
             description += "\n\nBecause of the very small number of literals (" + count1 + " and " + count2 + "), this should be considered a poor test of similarity.";
         }
-        this.submitResults({ likeliness: likliness, resultDescription: description });
+        this.submitResults({ likeliness: likliness, resultDescription: description, confidence: confidence });
     };
-<<<<<<< HEAD
-    LiteralComparisonAlgorithm.name = "Literal Comparison Algorithm";
-=======
     LiteralComparisonAlgorithm.algorithmName = "Literal";
->>>>>>> 5e5b2a1f7643b885e2a235e46d371a2c0022e534
     return LiteralComparisonAlgorithm;
 })(ASTComparisonAlgorithm);
 var FunctionDeclarationComparisonAlgorithm = (function (_super) {
@@ -223,6 +215,9 @@ var FunctionDeclarationComparisonAlgorithm = (function (_super) {
         var count2 = this.countElement("FunctionDeclaration", this.ast2);
         var likliness = this.getPercentSimilarity(count1, count2);
         var description;
+        var confGoal = 50;
+        var confidence = Math.min((100 - (((confGoal - (count1 + count2)) / confGoal) * 100)), 100);
+        console.log(confidence);
         if (likliness == 100) {
             description = "These have the exact same number of function declarations.";
         }
@@ -244,12 +239,8 @@ var FunctionDeclarationComparisonAlgorithm = (function (_super) {
         if (count1 <= 5 && count2 <= 5) {
             description += "\n\nBecause of the very small number of function (" + count1 + " and " + count2 + "), this should be considered a poor test of similarity.";
         }
-        this.submitResults({ likeliness: likliness, resultDescription: description });
+        this.submitResults({ likeliness: likliness, resultDescription: description, confidence: confidence });
     };
-<<<<<<< HEAD
-    FunctionDeclarationComparisonAlgorithm.name = "Function Declaration Comparison Algorithm";
-=======
     FunctionDeclarationComparisonAlgorithm.algorithmName = "Function Declaration";
->>>>>>> 5e5b2a1f7643b885e2a235e46d371a2c0022e534
     return FunctionDeclarationComparisonAlgorithm;
 })(ASTComparisonAlgorithm);

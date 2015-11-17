@@ -39,7 +39,7 @@ class EndController {
 				name: algorithm.algorithmName || name,
 				likeliness: this.results[name].likeliness,
 				resultDescription: this.results[name].resultDescription,
-				confidence: this.results[name].confidence || 1,
+				confidence: this.results[name].confidence,
 				confidenceBoostedLikeliness: 0
 			};
 			result.confidenceBoostedLikeliness = result.likeliness * result.confidence;
