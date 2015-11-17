@@ -1,29 +1,48 @@
 body * {
-	font-weight: 200 !important;
+	/*font-weight: 200 !important;*/
 }
 
 .fileupload {
 	font-size: 200%;
 	color: rgba(0,0,0,.2);
 	height: 250px;
+	transition: background-color 250ms, color 250ms;
+	-webkit-transition: background-color 250ms, color 250ms;
 	cursor: pointer;
 }
 
 .fileupload.dragover {
-	background: #666;
+	background-color: #666;
 	color: #FFF;
 }
 
 .fileupload.success {
-	background: #5cb85c;
-	border-color: #4cae4c;
+	background-color: #28b62c;
+	border-color: #28b62c;
 	color: #FFF;
 	padding-top: 70px;
 	cursor: default;
+	overflow: hidden;
 }
 
 .fileupload.success a {
 	text-decoration: none;
 	color: rgba(255,255,255,.8);
 	font-size: 50%;
+}
+
+.fileupload .fileupload-remove {
+	display: inline-block;
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    width: 100%;
+}
+
+.fileupload .fileupload-remove a {
+	border-radius: 4px;
+}
+
+.fileupload .fileupload-remove a:hover {
+	background: #ff4136
 }

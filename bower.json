@@ -14,7 +14,6 @@
   "dependencies": {
     "angular": "angularjs#~1.4.7",
     "angular-ui-router": "~0.2.15",
-    "bootstrap-css-only": "~3.3.5",
     "font-awesome": "~4.4.0",
     "ng-file-upload": "~10.0.2"
   }

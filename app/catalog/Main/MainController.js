@@ -1,6 +1,8 @@
+///<reference path="../../scripts/FileComparatorService"/>
 var MainController = (function () {
-    function MainController($scope) {
+    function MainController($scope, FileComparatorService) {
         this.$scope = $scope;
+        this.FileComparatorService = FileComparatorService;
         this.$scope['mc'] = this;
     }
     MainController.prototype.start = function () {
@@ -10,15 +12,14 @@ var MainController = (function () {
         fnca.onProgress(function (message) {
             console.log("got progress", message);
         });
-        fnca.onResults(function (r) {
-            console.log(r);
+        this.FileComparatorService.addCompareAlgoritm(fnca);
+        this.FileComparatorService.start(function (err, results) {
+            if (err)
+                throw err;
+            console.log(results);
         });
-        fnca.start(function () {
-            console.log("Done!");
-        });
-        fnca.emit("test", ["ha"]);
     };
-    MainController.$inject = ['$scope'];
+    MainController.$inject = ['$scope', 'FileComparatorService'];
     return MainController;
 })();
 angular.module('assignment2').controller("MainController", MainController);

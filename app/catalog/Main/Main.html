@@ -10,11 +10,11 @@
 			</div>
 			<div class="well fileupload success" ng-if="mc.file1">
 				<center>
-					<i class="fa fa-2x fa-check"></i><br>{{mc.file1.name}}
+					<i class="fa fa-2x fa-thumbs-o-up"></i><br>{{mc.file1.name}}
 				</center>
 				<br>
-				<center>
-					<a href="javascript:void(0)" ng-click="mc.file1 = null"><i class="fa fa-times"></i> Remove</a>
+				<center class="fileupload-remove">
+					<a href="javascript:void(0)" class="btn btn-link" ng-click="mc.file1 = null"><i class="fa fa-times"></i> Remove</a>
 				</center>
 			</div>
 		</div>
@@ -26,18 +26,18 @@
 			</div>
 			<div class="well fileupload success" ng-if="mc.file2">
 				<center>
-					<i class="fa fa-2x fa-check"></i><br>{{mc.file2.name}}
+					<i class="fa fa-2x fa-thumbs-o-up"></i><br>{{mc.file2.name}}
 				</center>
 				<br>
-				<center>
-					<a href="javascript:void(0)" ng-click="mc.file2 = null"><i class="fa fa-times"></i> Remove</a>
+				<center class="fileupload-remove">
+					<a href="javascript:void(0)" class="btn btn-link" ng-click="mc.file2 = null"><i class="fa fa-times"></i> Remove</a>
 				</center>
 			</div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-sm-8 col-sm-offset-2">
-			<button class="btn btn-default btn-block" ng-disabled="!mc.file2 || !mc.file1" ng-click="mc.start()">Compare</button>
+			<button class="btn btn-info btn-block btn-lg" ng-disabled="!mc.file2 || !mc.file1" ng-click="mc.start()">Compare</button>
 		</div>
 	</div>
 </div>
