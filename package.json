@@ -12,6 +12,10 @@
   },
   "homepage": "https://github.com/tutman96/SWE3313-Assignment2#readme",
   "dependencies": {
+    "esprima": "^2.7.0",
+    "estraverse": "^4.1.1",
+    "shift-parser": "^3.0.5",
+    "shift-spec": "^2015.1.3",
     "async": "^1.5.0"
   }
 }
