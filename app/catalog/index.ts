@@ -2,7 +2,13 @@
 
 var app = angular.module("assignment2", ["ui.router","ngFileUpload"]);
 import async = require('async');
-async.series([]);
+import crypto = require('crypto');
+import fs = require('fs');
+
+doNothing(async,crypto,fs);
+
+function doNothing(...anything){}
+
 app.config(['$stateProvider', '$locationProvider',
 	($stateProvider: angular.ui.IStateProvider, $locationProvider: angular.ILocationProvider) => {
 		if (location.hash == "") location.hash = "#/home";
@@ -16,7 +22,26 @@ app.config(['$stateProvider', '$locationProvider',
 			.state ('home', {
 				parent: 'main',
 				url: '/home',
-				templateUrl: 'catalog/Home/Home.html'
+				templateUrl: 'catalog/Home/Home.html',
+				controller: "HomeController"
 			})
-		
+			.state('results', {
+				parent: 'main',
+				url: '/results',
+				templateUrl: 'catalog/Results/Results.html',
+				controller: "ResultsController",
+				params: {
+					file1: "",
+					file2: ""
+				}
+			})
+			.state('end', {
+				parent: 'main',
+				url: '/end',
+				templateUrl: 'catalog/End/End.html',
+				controller: "EndController",
+				params: {
+					results: null
+				}
+			})
 	}]);

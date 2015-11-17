@@ -9,21 +9,18 @@ var FileNameCompareAlgorithm = (function (_super) {
         _super.apply(this, arguments);
     }
     FileNameCompareAlgorithm.prototype.setup = function () {
-        this.on("test", function (message) {
-            console.log("Test:", message);
-        });
     };
     FileNameCompareAlgorithm.prototype.compareWorker = function () {
         if (this.file1.path == this.file2.path) {
             this.submitResults({
                 likeliness: 100,
-                resultDescription: "They are exact"
+                resultDescription: "The file names and paths match"
             });
         }
         else {
             this.submitResults({
                 likeliness: 0,
-                resultDescription: "They aren't the same"
+                resultDescription: "The file names aren't the same"
             });
         }
     };

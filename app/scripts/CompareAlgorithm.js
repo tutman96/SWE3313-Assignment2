@@ -10,6 +10,7 @@ abstract;
 >>>>>>> 0bcc9cc42c19f912c270206a87db1ab7f3a05669
 var CompareAlgorithm = (function () {
     function CompareAlgorithm(file1, file2) {
+        this.name = "";
         this.messageListeners = {};
 <<<<<<< HEAD
         this.abstract = compareWorker();
