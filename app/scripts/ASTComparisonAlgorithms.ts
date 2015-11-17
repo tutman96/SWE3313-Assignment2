@@ -19,8 +19,11 @@ abstract class ASTComparisonAlgorithm extends CompareAlgorithm {
 		// 		resultDescription: "They aren't the same"
 		// 	})
 		// }
-		this.ast1 = parser.parse(this.file1);
-		this.ast2 = parser.parse(this.file2);
+		try {
+			this.ast1 = parser.parse(this.file1);
+			this.ast2 = parser.parse(this.file2);
+		} catch (Error) { this.throwError(new Error("There was a problem generating the AST.")) }
+		this.submitProgress(50);
 		this.compareASTs();
 	}
 
