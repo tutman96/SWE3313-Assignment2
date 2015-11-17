@@ -1,0 +1,440 @@
+{
+	type: 'Script',
+	directives: [],
+	statements: [
+		{
+			type: 'FunctionDeclaration',
+			isGenerator: false,
+			name: {
+				type: 'BindingIdentifier',
+				name: 'functionNameA'
+			},
+			params: {
+				type: 'FormalParameters',
+				items: [
+					{
+						type: 'BindingIdentifier',
+						name: 'parameter'
+					}
+				],
+				rest: null
+			},
+			body: {
+				type: 'FunctionBody',
+				directives: [],
+				statements: [
+					{
+						type: 'VariableDeclarationStatement',
+						declaration: {
+							type: 'VariableDeclaration',
+							kind: 'let',
+							declarators: [
+								{
+									type: 'VariableDeclarator',
+									binding: {
+										type: 'BindingIdentifier',
+										name: 'uninitialisedA'
+									},
+									init: null
+								}
+							]
+						}
+					},
+					{
+						type: 'ExpressionStatement',
+						expression: {
+							type: 'IdentifierExpression',
+							name: 'uninitialisedA'
+						}
+					},
+					{
+						type: 'VariableDeclarationStatement',
+						declaration: {
+							type: 'VariableDeclaration',
+							kind: 'let',
+							declarators: [
+								{
+									type: 'VariableDeclarator',
+									binding: {
+										type: 'BindingIdentifier',
+										name: 'uninitialisedB'
+									},
+									init: null
+								}
+							]
+						}
+					},
+					{
+						type: 'VariableDeclarationStatement',
+						declaration: {
+							type: 'VariableDeclaration',
+							kind: 'let',
+							declarators: [
+								{
+									type: 'VariableDeclarator',
+									binding: {
+										type: 'BindingIdentifier',
+										name: 'initialised'
+									},
+									init: {
+										type: 'LiteralNumericExpression',
+										value: 0
+									}
+								}
+							]
+						}
+					},
+					{
+						type: 'ExpressionStatement',
+						expression: {
+							type: 'IdentifierExpression',
+							name: 'initialised'
+						}
+					},
+					{
+						type: 'VariableDeclarationStatement',
+						declaration: {
+							type: 'VariableDeclaration',
+							kind: 'let',
+							declarators: [
+								{
+									type: 'VariableDeclarator',
+									binding: {
+										type: 'BindingIdentifier',
+										name: 'assigned'
+									},
+									init: null
+								}
+							]
+						}
+					},
+					{
+						type: 'ExpressionStatement',
+						expression: {
+							type: 'AssignmentExpression',
+							binding: {
+								type: 'BindingIdentifier',
+								name: 'assigned'
+							},
+							expression: {
+								type: 'LiteralNumericExpression',
+								value: 0
+							}
+						}
+					},
+					{
+						type: 'ExpressionStatement',
+						expression: {
+							type: 'IdentifierExpression',
+							name: 'assigned'
+						}
+					},
+					{
+						type: 'VariableDeclarationStatement',
+						declaration: {
+							type: 'VariableDeclaration',
+							kind: 'let',
+							declarators: [
+								{
+									type: 'VariableDeclarator',
+									binding: {
+										type: 'BindingIdentifier',
+										name: 'reassignedA'
+									},
+									init: {
+										type: 'LiteralNumericExpression',
+										value: 0
+									}
+								}
+							]
+						}
+					},
+					{
+						type: 'ExpressionStatement',
+						expression: {
+							type: 'AssignmentExpression',
+							binding: {
+								type: 'BindingIdentifier',
+								name: 'reassignedA'
+							},
+							expression: {
+								type: 'LiteralNumericExpression',
+								value: 0
+							}
+						}
+					},
+					{
+						type: 'VariableDeclarationStatement',
+						declaration: {
+							type: 'VariableDeclaration',
+							kind: 'let',
+							declarators: [
+								{
+									type: 'VariableDeclarator',
+									binding: {
+										type: 'BindingIdentifier',
+										name: 'reassignedB'
+									},
+									init: null
+								}
+							]
+						}
+					},
+					{
+						type: 'ExpressionStatement',
+						expression: {
+							type: 'AssignmentExpression',
+							binding: {
+								type: 'BindingIdentifier',
+								name: 'reassignedB'
+							},
+							expression: {
+								type: 'LiteralNumericExpression',
+								value: 0
+							}
+						}
+					},
+					{
+						type: 'ExpressionStatement',
+						expression: {
+							type: 'AssignmentExpression',
+							binding: {
+								type: 'BindingIdentifier',
+								name: 'reassignedB'
+							},
+							expression: {
+								type: 'LiteralNumericExpression',
+								value: 0
+							}
+						}
+					},
+					{
+						type: 'VariableDeclarationStatement',
+						declaration: {
+							type: 'VariableDeclaration',
+							kind: 'let',
+							declarators: [
+								{
+									type: 'VariableDeclarator',
+									binding: {
+										type: 'BindingIdentifier',
+										name: 'mutatedA'
+									},
+									init: {
+										type: 'LiteralNumericExpression',
+										value: 0
+									}
+								}
+							]
+						}
+					},
+					{
+						type: 'ExpressionStatement',
+						expression: {
+							type: 'UpdateExpression',
+							isPrefix: false,
+							operator: '++',
+							operand: {
+								type: 'BindingIdentifier',
+								name: 'mutatedA'
+							}
+						}
+					},
+					{
+						type: 'VariableDeclarationStatement',
+						declaration: {
+							type: 'VariableDeclaration',
+							kind: 'let',
+							declarators: [
+								{
+									type: 'VariableDeclarator',
+									binding: {
+										type: 'BindingIdentifier',
+										name: 'mutatedB'
+									},
+									init: {
+										type: 'LiteralNumericExpression',
+										value: 0
+									}
+								}
+							]
+						}
+					},
+					{
+						type: 'ExpressionStatement',
+						expression: {
+							type: 'UpdateExpression',
+							isPrefix: true,
+							operator: '--',
+							operand: {
+								type: 'BindingIdentifier',
+								name: 'mutatedB'
+							}
+						}
+					},
+					{
+						type: 'TryCatchStatement',
+						body: {
+							type: 'Block',
+							statements: []
+						},
+						catchClause: {
+							type: 'CatchClause',
+							binding: {
+								type: 'BindingIdentifier',
+								name: 'catchA'
+							},
+							body: {
+								type: 'Block',
+								statements: [
+									{
+										type: 'ExpressionStatement',
+										expression: {
+											type: 'AssignmentExpression',
+											binding: {
+												type: 'BindingIdentifier',
+												name: 'catchA'
+											},
+											expression: {
+												type: 'LiteralNumericExpression',
+												value: 0
+											}
+										}
+									}
+								]
+							}
+						}
+					},
+					{
+						type: 'TryCatchStatement',
+						body: {
+							type: 'Block',
+							statements: []
+						},
+						catchClause: {
+							type: 'CatchClause',
+							binding: {
+								type: 'BindingIdentifier',
+								name: 'catchB'
+							},
+							body: {
+								type: 'Block',
+								statements: []
+							}
+						}
+					},
+					{
+						type: 'ExpressionStatement',
+						expression: {
+							type: 'AssignmentExpression',
+							binding: {
+								type: 'BindingIdentifier',
+								name: 'arguments'
+							},
+							expression: {
+								type: 'LiteralNumericExpression',
+								value: 0
+							}
+						}
+					},
+					{
+						type: 'ExpressionStatement',
+						expression: {
+							type: 'AssignmentExpression',
+							binding: {
+								type: 'BindingIdentifier',
+								name: 'parameter'
+							},
+							expression: {
+								type: 'LiteralNumericExpression',
+								value: 0
+							}
+						}
+					},
+					{
+						type: 'ExpressionStatement',
+						expression: {
+							type: 'AssignmentExpression',
+							binding: {
+								type: 'BindingIdentifier',
+								name: 'functionNameA'
+							},
+							expression: {
+								type: 'LiteralNumericExpression',
+								value: 0
+							}
+						}
+					},
+					{
+						type: 'FunctionDeclaration',
+						isGenerator: false,
+						name: {
+							type: 'BindingIdentifier',
+							name: 'functionNameB'
+						},
+						params: {
+							type: 'FormalParameters',
+							items: [],
+							rest: null
+						},
+						body: {
+							type: 'FunctionBody',
+							directives: [],
+							statements: []
+						}
+					},
+					{
+						type: 'ExpressionStatement',
+						expression: {
+							type: 'AssignmentExpression',
+							binding: {
+								type: 'BindingIdentifier',
+								name: 'functionNameB'
+							},
+							expression: {
+								type: 'LiteralNumericExpression',
+								value: 0
+							}
+						}
+					},
+					{
+						type: 'ExpressionStatement',
+						expression: {
+							type: 'FunctionExpression',
+							isGenerator: false,
+							name: {
+								type: 'BindingIdentifier',
+								name: 'functionNameC'
+							},
+							params: {
+								type: 'FormalParameters',
+								items: [],
+								rest: null
+							},
+							body: {
+								type: 'FunctionBody',
+								directives: [],
+								statements: [
+									{
+										type: 'ExpressionStatement',
+										expression: {
+											type: 'AssignmentExpression',
+											binding: {
+												type: 'BindingIdentifier',
+												name: 'functionNameC'
+											},
+											expression: {
+												type: 'LiteralNumericExpression',
+												value: 0
+											}
+										}
+									}
+								]
+							}
+						}
+					}
+				]
+			}
+		}
+	]
+}

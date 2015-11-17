@@ -1,11 +1,14 @@
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    __.prototype = b.prototype;
+    d.prototype = new __();
 };
+abstract;
 var CompareAlgorithm = (function () {
     function CompareAlgorithm(filename1, filename2) {
         this.messageListeners = {};
+        this.abstract = compareWorker();
         this.filename1 = filename1;
         this.filename2 = filename2;
         this.setup();
