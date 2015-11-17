@@ -53,56 +53,56 @@ abstract class ASTComparisonAlgorithm extends CompareAlgorithm {
 }
 
 class BinaryExpressionCompareAlgorithm extends ASTComparisonAlgorithm {
-
+	name = "Binary Expression Comparison Algorithm"
 	public compareASTs() {
 		var count1 = this.countElement("BinaryExpression", this.ast1);
 		var count2 = this.countElement("BinaryExpression", this.ast2);
 		var likliness = this.getPercentSimilarity(count1, count2);
-		this.submitResults({ likeliness: likliness, resultDescription: "" });
+		this.submitResults({ likeliness: likliness, resultDescription: "This counts the number of operations performed (*,/,+,-,=,==,etc)" });
 	}
 
 }
 
 class VariableDeclaratorComparisonAlgorithm extends ASTComparisonAlgorithm {
-
+	name = "Binary Expression Comparison Algorithm"
 	public compareASTs() {
 		var count1 = this.countElement("VariableDeclarator", this.ast1);
 		var count2 = this.countElement("VariableDeclarator", this.ast2);
 		var likliness = this.getPercentSimilarity(count1, count2);
-		this.submitResults({ likeliness: likliness, resultDescription: "" });
+		this.submitResults({ likeliness: likliness, resultDescription: "This compares the number of variable declarations in each file." });
 	}
 
 }
 
 class CallExpressionComparisonAlgorithm extends ASTComparisonAlgorithm {
-
+	name = "Call Expression Comparison Algorithm"
 	public compareASTs() {
 		var count1 = this.countElement("CallExpression", this.ast1);
 		var count2 = this.countElement("CallExpression", this.ast2);
 		var likliness = this.getPercentSimilarity(count1, count2);
-		this.submitResults({ likeliness: likliness, resultDescription: "" });
+		this.submitResults({ likeliness: likliness, resultDescription: "This of function/method calls in each file." });
 	}
 
 }
 
 class LiteralComparisonAlgorithm extends ASTComparisonAlgorithm {
-
+	name = "Literal Comparison Algorithm"
 	public compareASTs() {
 		var count1 = this.countElement("Literal", this.ast1);
 		var count2 = this.countElement("Literal", this.ast2);
 		var likliness = this.getPercentSimilarity(count1, count2);
-		this.submitResults({ likeliness: likliness, resultDescription: "" });
+		this.submitResults({ likeliness: likliness, resultDescription: "This compares the number of string and number literals in each file." });
 	}
 
 }
 
 class FunctionDeclarationComparisonAlgorithm extends ASTComparisonAlgorithm {
-
+	name = "Function Declaration Comparison Algorithm"
 	public compareASTs() {
 		var count1 = this.countElement("FunctionDeclaration", this.ast1);
 		var count2 = this.countElement("FunctionDeclaration", this.ast2);
 		var likliness = this.getPercentSimilarity(count1, count2);
-		this.submitResults({ likeliness: likliness, resultDescription: "" });
+		this.submitResults({ likeliness: likliness, resultDescription: "This compares the number of function declarations in each file." });
 	}
 
 }
