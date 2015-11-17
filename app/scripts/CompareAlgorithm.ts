@@ -3,6 +3,7 @@ abstract class CompareAlgorithm {
 	protected file2: File;
 	
 	protected name: string = "";
+	protected static weight: number = 1;
 
 	messageListeners: { [eventTypes: string]: Array<(data: any) => void> } = {};
 

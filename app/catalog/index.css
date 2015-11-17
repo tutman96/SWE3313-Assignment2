@@ -1,7 +1,3 @@
-body * {
-	/*font-weight: 200 !important;*/
-}
-
 .fileupload {
 	font-size: 200%;
 	color: rgba(0,0,0,.2);
@@ -45,4 +41,40 @@ body * {
 
 .fileupload .fileupload-remove a:hover {
 	background: #ff4136
+}
+
+.end-odometer {
+	font-size: 180px;
+	width: 100%;
+	text-align: center;
+	transition: all 500ms;
+	-webkit-transition: all 500ms;
+}
+
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.end-odometer small {
+	font-size: 25%;
+    color: #AAA;
+	-webkit-animation: fadein 3s;
+}
+
+.end, .end-detail {
+	transition: margin 500ms;
+	-webkit-transition: margin 500ms;
+}
+
+.end {
+	margin-top: 60px;
+}
+
+.end-detail {
+	margin-top: 0px !important;
+}
+
+.end-detail .end-odometer {
+	font-size: 80px;
 }
