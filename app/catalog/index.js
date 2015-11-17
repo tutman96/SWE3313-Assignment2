@@ -1,5 +1,7 @@
 ///<reference path="../../typings/tsd.d.ts"/>
-var app = angular.module("assignment2", ["ui.router"]);
+var app = angular.module("assignment2", ["ui.router", "ngFileUpload"]);
+var async = require('async');
+async.series([]);
 app.config(['$stateProvider', '$locationProvider',
     function ($stateProvider, $locationProvider) {
         if (location.hash == "")
