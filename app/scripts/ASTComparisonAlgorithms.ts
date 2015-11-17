@@ -2,9 +2,9 @@ var parser = require("esprima");
 var traverser = require("estraverse");
 
 abstract class ASTComparisonAlgorithm extends CompareAlgorithm {
-	
-	protected ast1:any;
-	protected ast2:any;
+
+	protected ast1: any;
+	protected ast2: any;
 
 	compareWorker() {
 		// if (this.file1.path == this.file2.path) {
@@ -23,24 +23,26 @@ abstract class ASTComparisonAlgorithm extends CompareAlgorithm {
 		this.ast2 = parser.parse(this.file2);
 		this.compareASTs();
 	}
-	
-	protected getPercentSimilarity(n1,n2)
-	{
-		let min = Math.min(n1,n2)
-		let max = Math.max(n1,n2)
-		return (1-((max-min)/max)) * 100
+
+	protected getPercentSimilarity(n1, n2) {
+		let min = Math.min(n1, n2)
+		let max = Math.max(n1, n2)
+		return (1 - ((max - min) / max)) * 100
 	}
-	
-	protected countElement(element:string,ast:any) {
+
+	protected countElement(element: string, ast: any) {
 		var count = 0;
-		traverser.traverse(ast,{enter:(node,parent)=>{
-			count++;
-		}})
+		traverser.traverse(ast, {
+			enter: (node, parent) => {
+				if (node.type == element)
+					count++;
+			}
+		})
 		return count;
 	}
-	
+
 	abstract compareASTs()
-	
+
 }
 
 class BinaryExpressionCompareAlgorithm extends ASTComparisonAlgorithm {
