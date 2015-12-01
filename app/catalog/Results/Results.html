@@ -1,8 +1,9 @@
+<button class="btn btn-warning btn-sm top" ng-click="rc.goHome()"><i class="fa fa-arrow-left"></i> Back</button>
 <div class="container-fluid" style="margin-top:60px;">
 	<center>
 		<h2>{{rc.titleText}}</h2></center><br>
 	<div ng-repeat="result in rc.results" class="clearfix">
-		<label>{{result.name}}</label>
+		<label>{{result.name}} Comparison Algorithm</label>
 		<label class="pull-right text-danger" ng-if="result.status == 2"><i class="fa fa-exclamation-triangle"></i> {{result.resultDescription | capitalize}}</label>
 		<div class="progress" style="margin-bottom: 6px">
 			<div class="progress-bar progress-bar-danger" style="width:100%" ng-if="result.status == 2"></div>

@@ -23,13 +23,16 @@ class FileComparatorService {
 
 		this.algoritms.forEach(algorithm => {
 			functs[algorithm.constructor['name']] = (callback) => {
+				var hasCalled = false;
 				algorithm.on("error", (err) => {
-					callback(err);
+					if (!hasCalled) callback(err);
+					hasCalled = true;
 				})
 
 				algorithm.onResults((results) => {
 					setTimeout(() => {
-						callback(null, results);
+						if (!hasCalled) callback(null, results);
+						hasCalled = true;
 					},250)
 				})
 				

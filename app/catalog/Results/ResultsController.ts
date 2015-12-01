@@ -48,7 +48,7 @@ class ResultsController {
 			var al = new algorithmClass(this.file1, this.file2);
 
 			var result = {
-				name: al.constructor['name'],
+				name: al.constructor['algorithmName'],
 				progress: null,
 				status: AlgorithmStatus.Running,
 				likeliness: 0,
@@ -66,6 +66,7 @@ class ResultsController {
 			al.onResults((algorithmResults) => {
 				console.log("Results:", algorithmResults);
 				this.safeApply(() => {
+					if (result.status == AlgorithmStatus.Error) return;
 					result.status = AlgorithmStatus.Finished;
 					result.likeliness = algorithmResults.likeliness;
 					result.resultDescription = algorithmResults.resultDescription;
@@ -73,6 +74,7 @@ class ResultsController {
 			})
 
 			al.on("error", (err: Error) => {
+				console.log("Error computing:",err);
 				this.safeApply(() => {
 					result.status = AlgorithmStatus.Error;
 					result.resultDescription = err.message;
@@ -84,6 +86,7 @@ class ResultsController {
 
 		setTimeout(() => {
 			this.FileComparatorService.start((err, results) => {
+				if (err) return;
 				this.safeApply(() => {
 					this.titleText = "Compiling results..."
 				});
@@ -106,6 +109,10 @@ class ResultsController {
 			this.$scope.$apply(fn);
 		}
 	};
+	
+	goHome() {
+		this.$state.go("home");
+	}
 }
 angular.module('assignment2').controller("ResultsController", ResultsController);
 

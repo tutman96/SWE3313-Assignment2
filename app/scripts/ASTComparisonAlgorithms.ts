@@ -26,7 +26,7 @@ abstract class ASTComparisonAlgorithm extends CompareAlgorithm {
 			
 			this.ast1 = parser.parse(file1);
 			this.ast2 = parser.parse(file2);
-		} catch (Error) { this.throwError(new Error("There was a problem generating the AST.")) }
+		} catch (err) { this.throwError(new Error("There was a problem generating the AST.")) }
 		this.submitProgress(50);
 		this.compareASTs();
 	}

@@ -13,12 +13,17 @@ var FileComparatorService = (function () {
         var functs = {};
         this.algoritms.forEach(function (algorithm) {
             functs[algorithm.constructor['name']] = function (callback) {
+                var hasCalled = false;
                 algorithm.on("error", function (err) {
-                    callback(err);
+                    if (!hasCalled)
+                        callback(err);
+                    hasCalled = true;
                 });
                 algorithm.onResults(function (results) {
                     setTimeout(function () {
-                        callback(null, results);
+                        if (!hasCalled)
+                            callback(null, results);
+                        hasCalled = true;
                     }, 250);
                 });
                 algorithm.start();

@@ -21,6 +21,4 @@ app.on('ready', function () {
 	mainWindow = new BrowserWindow({ width: 1000, height: 660 });
 
 	mainWindow.loadUrl('file://' + __dirname + '/app/index.html');
-
-	mainWindow.webContents.openDevTools({ detach: true });
 });

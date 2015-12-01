@@ -34,7 +34,7 @@ var ResultsController = (function () {
         this.algorithms.forEach(function (algorithmClass) {
             var al = new algorithmClass(_this.file1, _this.file2);
             var result = {
-                name: al.constructor['name'],
+                name: al.constructor['algorithmName'],
                 progress: null,
                 status: AlgorithmStatus.Running,
                 likeliness: 0,
@@ -49,12 +49,15 @@ var ResultsController = (function () {
             al.onResults(function (algorithmResults) {
                 console.log("Results:", algorithmResults);
                 _this.safeApply(function () {
+                    if (result.status == AlgorithmStatus.Error)
+                        return;
                     result.status = AlgorithmStatus.Finished;
                     result.likeliness = algorithmResults.likeliness;
                     result.resultDescription = algorithmResults.resultDescription;
                 });
             });
             al.on("error", function (err) {
+                console.log("Error computing:", err);
                 _this.safeApply(function () {
                     result.status = AlgorithmStatus.Error;
                     result.resultDescription = err.message;
@@ -64,6 +67,8 @@ var ResultsController = (function () {
         });
         setTimeout(function () {
             _this.FileComparatorService.start(function (err, results) {
+                if (err)
+                    return;
                 _this.safeApply(function () {
                     _this.titleText = "Compiling results...";
                 });
@@ -87,6 +92,9 @@ var ResultsController = (function () {
         }
     };
     ;
+    ResultsController.prototype.goHome = function () {
+        this.$state.go("home");
+    };
     ResultsController.$inject = ['$scope', '$state', '$stateParams', 'FileComparatorService'];
     return ResultsController;
 })();
