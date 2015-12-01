@@ -41,6 +41,16 @@ var ASTComparisonAlgorithm = (function (_super) {
         var max = Math.max(n1, n2) + 1;
         return 100 - (((max - min) / max) * 100);
     };
+    ASTComparisonAlgorithm.prototype.getConfidence = function (confGoal, count1, count2, likliness) {
+        //return Math.min((100 - (((confGoal - (count1 + count2)) / confGoal) * 100)) + (((count1 + count1) > 5) ? (100 - likliness) : 0), 100);
+        var total = count1 + count2;
+        var liklinessOffset = (100 - likliness) / 2;
+        var unConfidence = ((confGoal - total) / confGoal);
+        var confidence = (100 - (unConfidence * 100));
+        confidence += liklinessOffset;
+        confidence = Math.max(0, Math.min(100, confidence));
+        return confidence;
+    };
     ASTComparisonAlgorithm.prototype.countElement = function (element, ast) {
         var count = 0;
         traverser.traverse(ast, {
@@ -63,8 +73,8 @@ var BinaryExpressionCompareAlgorithm = (function (_super) {
         var count2 = this.countElement("BinaryExpression", this.ast2);
         var likliness = this.getPercentSimilarity(count1, count2);
         var description;
-        var confGoal = 2000;
-        var confidence = Math.min((100 - (((confGoal - (count1 + count2)) / confGoal) * 100)), 100);
+        var confGoal = 1000;
+        var confidence = this.getConfidence(confGoal, count1, count2, likliness);
         if (likliness == 100) {
             description = "These have the exact same number of binary expressions.";
         }
@@ -83,8 +93,11 @@ var BinaryExpressionCompareAlgorithm = (function (_super) {
         if (count1 > 50 || count2 > 50) {
             description += "\n\nBecause of the large number of binary expressions (" + count1 + " and " + count2 + "), this should be considered a good test of similarity.";
         }
-        if (count1 <= 5 && count2 <= 5) {
+        else if (count1 <= 5 && count2 <= 5) {
             description += "\n\nBecause of the very small number of binary expressions (" + count1 + " and " + count2 + "), this should be considered a poor test of similarity.";
+        }
+        else {
+            description += "\n\n(" + count1 + " and " + count2 + ")";
         }
         this.submitResults({ likeliness: likliness, resultDescription: description, confidence: confidence });
     };
@@ -101,8 +114,8 @@ var VariableDeclaratorComparisonAlgorithm = (function (_super) {
         var count2 = this.countElement("VariableDeclarator", this.ast2);
         var likliness = this.getPercentSimilarity(count1, count2);
         var description;
-        var confGoal = 2000;
-        var confidence = Math.min((100 - (((confGoal - (count1 + count2)) / confGoal) * 100)), 100);
+        var confGoal = 1000;
+        var confidence = this.getConfidence(confGoal, count1, count2, likliness);
         if (likliness == 100) {
             description = "These have the exact same number of variable declarations.";
         }
@@ -121,8 +134,11 @@ var VariableDeclaratorComparisonAlgorithm = (function (_super) {
         if (count1 > 50 || count2 > 50) {
             description += "\n\nBecause of the large number of variables (" + count1 + " and " + count2 + "), this should be considered a good test of similarity.";
         }
-        if (count1 <= 5 && count2 <= 5) {
+        else if (count1 <= 5 && count2 <= 5) {
             description += "\n\nBecause of the very small number of variables (" + count1 + " and " + count2 + "), this should be considered a poor test of similarity.";
+        }
+        else {
+            description += "\n\n(" + count1 + " and " + count2 + ")";
         }
         this.submitResults({ likeliness: likliness, resultDescription: description, confidence: confidence });
     };
@@ -139,8 +155,8 @@ var CallExpressionComparisonAlgorithm = (function (_super) {
         var count2 = this.countElement("CallExpression", this.ast2);
         var likliness = this.getPercentSimilarity(count1, count2);
         var description;
-        var confGoal = 4000;
-        var confidence = Math.min((100 - (((confGoal - (count1 + count2)) / confGoal) * 100)), 100);
+        var confGoal = 2000;
+        var confidence = this.getConfidence(confGoal, count1, count2, likliness);
         if (likliness == 100) {
             description = "These have the exact same number of function calls.";
         }
@@ -159,8 +175,11 @@ var CallExpressionComparisonAlgorithm = (function (_super) {
         if (count1 > 50 || count2 > 50) {
             description += "\n\nBecause of the large number of function calls (" + count1 + " and " + count2 + "), this should be considered a good test of similarity.";
         }
-        if (count1 <= 5 && count2 <= 5) {
+        else if (count1 <= 5 && count2 <= 5) {
             description += "\n\nBecause of the very small number of function calls (" + count1 + " and " + count2 + "), this should be considered a poor test of similarity.";
+        }
+        else {
+            description += "\n\n(" + count1 + " and " + count2 + ")";
         }
         this.submitResults({ likeliness: likliness, resultDescription: description, confidence: confidence });
     };
@@ -178,7 +197,7 @@ var LiteralComparisonAlgorithm = (function (_super) {
         var likliness = this.getPercentSimilarity(count1, count2);
         var description;
         var confGoal = 100;
-        var confidence = Math.min((100 - (((confGoal - (count1 + count2)) / confGoal) * 100)), 100);
+        var confidence = this.getConfidence(confGoal, count1, count2, likliness);
         if (likliness == 100) {
             description = "These have the exact same number of literal declarations.";
         }
@@ -197,8 +216,11 @@ var LiteralComparisonAlgorithm = (function (_super) {
         if (count1 > 50 || count2 > 50) {
             description += "\n\nBecause of the large number of literals (" + count1 + " and " + count2 + "), this should be considered a good test of similarity.";
         }
-        if (count1 <= 5 && count2 <= 5) {
+        else if (count1 <= 5 && count2 <= 5) {
             description += "\n\nBecause of the very small number of literals (" + count1 + " and " + count2 + "), this should be considered a poor test of similarity.";
+        }
+        else {
+            description += "\n\n(" + count1 + " and " + count2 + ")";
         }
         this.submitResults({ likeliness: likliness, resultDescription: description, confidence: confidence });
     };
@@ -215,8 +237,8 @@ var FunctionDeclarationComparisonAlgorithm = (function (_super) {
         var count2 = this.countElement("FunctionDeclaration", this.ast2);
         var likliness = this.getPercentSimilarity(count1, count2);
         var description;
-        var confGoal = 50;
-        var confidence = Math.min((100 - (((confGoal - (count1 + count2)) / confGoal) * 100)), 100);
+        var confGoal = 25;
+        var confidence = this.getConfidence(confGoal, count1, count2, likliness);
         console.log(confidence);
         if (likliness == 100) {
             description = "These have the exact same number of function declarations.";
@@ -234,10 +256,13 @@ var FunctionDeclarationComparisonAlgorithm = (function (_super) {
             description = "One file has more than twice the number of function in it. It is very unlikely that these files are duplicates.";
         }
         if (count1 > 50 || count2 > 50) {
-            description += "\n\nBecause of the large number of function (" + count1 + " and " + count2 + "), this should be considered a good test of similarity.";
+            description += "\n\nBecause of the large number of functions (" + count1 + " and " + count2 + "), this should be considered a good test of similarity.";
         }
-        if (count1 <= 5 && count2 <= 5) {
-            description += "\n\nBecause of the very small number of function (" + count1 + " and " + count2 + "), this should be considered a poor test of similarity.";
+        else if (count1 <= 5 && count2 <= 5) {
+            description += "\n\nBecause of the very small number of functions (" + count1 + " and " + count2 + "), this should be considered a poor test of similarity.";
+        }
+        else {
+            description += "\n\n(" + count1 + " and " + count2 + ")";
         }
         this.submitResults({ likeliness: likliness, resultDescription: description, confidence: confidence });
     };
