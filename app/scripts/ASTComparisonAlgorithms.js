@@ -48,6 +48,7 @@ var ASTComparisonAlgorithm = (function (_super) {
         var unConfidence = ((confGoal - total) / confGoal);
         var confidence = (100 - (unConfidence * 100));
         confidence += liklinessOffset;
+        confidence = Math.max(0, Math.min(100, confidence));
         return confidence;
     };
     ASTComparisonAlgorithm.prototype.countElement = function (element, ast) {
